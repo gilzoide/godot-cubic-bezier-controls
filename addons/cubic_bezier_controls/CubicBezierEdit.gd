@@ -1,5 +1,9 @@
 tool
 extends "res://addons/cubic_bezier_controls/CubicBezierRect.gd"
+"""
+Control to display and manually edit a CubicBezierCurve using mouse.
+"""
+
 
 enum Dragging {
 	NONE,
@@ -12,7 +16,7 @@ export(Color) var handle2_color = Color("#00aabb")
 export(Color) var handle_select_color = Color.yellow
 export(float) var handle_radius = 10
 export(Color) var handle_line_color = Color.white
-export(float) var handle_line_width = 2
+export(float) var handle_line_width = 1
 export(bool) var clamp_x = true
 export(bool) var clamp_y = true
 
@@ -22,7 +26,6 @@ var _dragging = Dragging.NONE
 func _draw() -> void:
 	._draw()
 	# NOTE: transformation for Y+ up is still applied
-	
 	var handle1_pos = _curve.control_1 * rect_size
 	var handle2_pos = _curve.control_2 * rect_size
 	draw_line(Vector2.ZERO, handle1_pos, handle_line_color, handle_line_width)

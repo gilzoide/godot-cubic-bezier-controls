@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="CubicBezierControls"
+run/main_scene="res://addons/cubic_bezier_controls/sample/CubicBezierEdit.tscn"
 config/icon="res://icon.png"
 
 [physics]

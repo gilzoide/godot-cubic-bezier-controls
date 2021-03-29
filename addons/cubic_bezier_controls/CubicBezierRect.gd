@@ -1,5 +1,10 @@
 tool
 extends Control
+"""
+Control to display a CubicBezierCurve.
+"""
+
+signal curve_changed()
 
 export(Color) var line_color = Color.white
 export(float) var line_width = 2
@@ -41,3 +46,4 @@ func get_curve() -> CubicBezierCurve:
 func _on_curve_updated() -> void:
 	if visible:
 		update()
+	emit_signal("curve_changed")
