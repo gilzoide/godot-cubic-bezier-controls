@@ -44,7 +44,7 @@ func get_control2() -> Vector2:
 	return _control2
 
 
-func interpolate(t: float) -> float:
+func interpolate(t: float) -> Vector2:
 	return interpolate_control_points(_control1, _control2, t)
 
 
@@ -60,12 +60,12 @@ func fill_curve2D(curve2D: Curve2D) -> void:
 	curve2D.add_point(END, control2 - END, Vector2.ZERO)
 
 
-static func interpolate_control_points(control1: Vector2, control2: Vector2, t: float) -> float:
+static func interpolate_control_points(control1: Vector2, control2: Vector2, t: float) -> Vector2:
 	return interpolate_points(START, control1, control2, END, t)
 
 
 # Ref: https://github.com/godotengine/godot/blob/e8f73124a7d97abc94cea3cf7fe5b5614f61a448/scene/resources/curve.cpp#L36-L45
-static func interpolate_points(start: Vector2, control1: Vector2, control2: Vector2, end: Vector2, t: float) -> float:
+static func interpolate_points(start: Vector2, control1: Vector2, control2: Vector2, end: Vector2, t: float) -> Vector2:
 	var omt = (1.0 - t)
 	var omt2 = omt * omt
 	var omt3 = omt2 * omt
