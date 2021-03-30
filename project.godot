@@ -24,6 +24,10 @@ config/name="CubicBezierControls"
 run/main_scene="res://addons/cubic_bezier_controls/sample/CubicBezierEdit.tscn"
 config/icon="res://icon.png"
 
+[global]
+
+default=false
+
 [physics]
 
 common/enable_pause_aware_picking=true
@@ -33,4 +37,3 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"
