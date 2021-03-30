@@ -25,13 +25,15 @@ func _draw() -> void:
 		return
 	draw_set_transform(Vector2(0, rect_size.y), 0, Vector2(1, -1))
 	var points = PoolVector2Array()
-	var point_count = clamp(rect_size.x, 2, resolution)
+	var point_count = max(rect_size.x, resolution)
 	var control1 = _curve.control1
 	var control2 = _curve.control2
-	for i in point_count:
+	points.append(Vector2.ZERO)
+	for i in range(1, point_count):
 		var t = float(i) / point_count
 		var point = CubicBezierCurve.interpolate_control_points(control1, control2, t) * rect_size
 		points.append(point)
+	points.append(rect_size)
 	draw_polyline(points, line_color, line_width)
 
 

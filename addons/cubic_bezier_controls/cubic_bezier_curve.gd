@@ -70,7 +70,7 @@ static func interpolate_points(start: Vector2, control1: Vector2, control2: Vect
 	var omt2 = omt * omt
 	var omt3 = omt2 * omt
 	var t2 = t * t
-	var t3 = t2 * t;
+	var t3 = t2 * t
 	return start * omt3 \
 			+ control1 * omt2 * t * 3.0 \
 			+ control2 * omt * t2 * 3.0 \
