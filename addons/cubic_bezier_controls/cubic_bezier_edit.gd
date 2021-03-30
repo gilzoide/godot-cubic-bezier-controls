@@ -1,9 +1,12 @@
 tool
-extends "res://addons/cubic_bezier_controls/CubicBezierRect.gd"
+extends CubicBezierRect
+class_name CubicBezierEdit
 """
 Control to display and manually edit a CubicBezierCurve using mouse.
 """
 
+signal control1_changed()
+signal control2_changed()
 
 enum Dragging {
 	NONE,
@@ -24,10 +27,12 @@ var _dragging = Dragging.NONE
 
 
 func _draw() -> void:
+	if _curve == null:
+		return
 	._draw()
 	# NOTE: transformation for Y+ up is still applied
-	var handle1_pos = _curve.control_1 * rect_size
-	var handle2_pos = _curve.control_2 * rect_size
+	var handle1_pos = _curve.control1 * rect_size
+	var handle2_pos = _curve.control2 * rect_size
 	draw_line(Vector2.ZERO, handle1_pos, handle_line_color, handle_line_width)
 	draw_line(rect_size, handle2_pos, handle_line_color, handle_line_width)
 	if _dragging == Dragging.HANDLE_1:
@@ -60,7 +65,8 @@ func set_control_point1(point: Vector2) -> void:
 		point.x = clamp(point.x, 0, 1)
 	if clamp_y:
 		point.y = clamp(point.y, 0, 1)
-	_curve.control_1 = point
+	_curve.control1 = point
+	emit_signal("control1_changed")
 	update()
 
 
@@ -69,14 +75,15 @@ func set_control_point2(point: Vector2) -> void:
 		point.x = clamp(point.x, 0, 1)
 	if clamp_y:
 		point.y = clamp(point.y, 0, 1)
-	_curve.control_2 = point
+	_curve.control2 = point
+	emit_signal("control2_changed")
 	update()
 
 
 func _get_dragging_from_position(position: Vector2) -> int:
-	if Geometry.is_point_in_circle(position, Vector2(_curve.control_1.x, 1 - _curve.control_1.y) * rect_size, handle_radius):
+	if Geometry.is_point_in_circle(position, Vector2(_curve.control1.x, 1 - _curve.control1.y) * rect_size, handle_radius):
 		return Dragging.HANDLE_1
-	elif Geometry.is_point_in_circle(position, Vector2(_curve.control_2.x, 1 - _curve.control_2.y) * rect_size, handle_radius):
+	elif Geometry.is_point_in_circle(position, Vector2(_curve.control2.x, 1 - _curve.control2.y) * rect_size, handle_radius):
 		return Dragging.HANDLE_2
 	else:
 		return Dragging.NONE

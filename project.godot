@@ -12,10 +12,22 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "CubicBezierCurve",
 "language": "GDScript",
-"path": "res://addons/cubic_bezier_controls/CubicBezierCurve.gd"
+"path": "res://addons/cubic_bezier_controls/cubic_bezier_curve.gd"
+}, {
+"base": "CubicBezierRect",
+"class": "CubicBezierEdit",
+"language": "GDScript",
+"path": "res://addons/cubic_bezier_controls/cubic_bezier_edit.gd"
+}, {
+"base": "Control",
+"class": "CubicBezierRect",
+"language": "GDScript",
+"path": "res://addons/cubic_bezier_controls/cubic_bezier_rect.gd"
 } ]
 _global_script_class_icons={
-"CubicBezierCurve": ""
+"CubicBezierCurve": "",
+"CubicBezierEdit": "",
+"CubicBezierRect": ""
 }
 
 [application]
@@ -27,6 +39,10 @@ config/icon="res://icon.png"
 [display]
 
 window/size/width=800
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/cubic_bezier_controls/plugin.cfg" )
 
 [global]
 
