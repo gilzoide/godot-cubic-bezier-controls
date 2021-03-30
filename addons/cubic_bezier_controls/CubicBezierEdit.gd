@@ -11,14 +11,14 @@ enum Dragging {
 	HANDLE_2,
 }
 
+export(bool) var clamp_x = true
+export(bool) var clamp_y = true
 export(Color) var handle1_color = Color("#ff0088")
 export(Color) var handle2_color = Color("#00aabb")
 export(Color) var handle_select_color = Color.yellow
 export(float) var handle_radius = 10
 export(Color) var handle_line_color = Color.white
 export(float) var handle_line_width = 1
-export(bool) var clamp_x = true
-export(bool) var clamp_y = true
 
 var _dragging = Dragging.NONE
 

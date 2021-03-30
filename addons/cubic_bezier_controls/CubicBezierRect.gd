@@ -2,6 +2,8 @@ tool
 extends Control
 """
 Control to display a CubicBezierCurve.
+
+At most `resolution` points will be calculated and drawn.
 """
 
 signal curve_changed()
