@@ -24,6 +24,10 @@ config/name="CubicBezierControls"
 run/main_scene="res://addons/cubic_bezier_controls/sample/CubicBezierEdit.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=800
+
 [global]
 
 default=false
