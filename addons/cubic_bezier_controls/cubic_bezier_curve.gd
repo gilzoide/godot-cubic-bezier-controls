@@ -20,6 +20,12 @@ func _init(control1 := Vector2.ZERO, control2 := Vector2.ONE) -> void:
 	_control2 = control2
 
 
+func copy_from(other: CubicBezierCurve) -> void:
+	_control1 = other._control1
+	_control2 = other._control2
+	emit_changed()
+
+
 func set_control1(value: Vector2) -> void:
 	_control1 = value
 	emit_changed()
