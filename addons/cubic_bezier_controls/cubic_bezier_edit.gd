@@ -49,8 +49,12 @@ func _gui_input(event: InputEvent) -> void:
 			_dragging = _get_dragging_from_position(event.position)
 			update()
 		elif _dragging != Dragging.NONE:
-			update()
 			_dragging = Dragging.NONE
+			update()
+		else:
+			var relative = event.position / rect_size
+			relative.y = 1.0 - relative.y
+			set_closest_handle_position(relative)
 	elif event is InputEventMouseMotion:
 		if _dragging == Dragging.HANDLE_1:
 			var pos = event.position / rect_size
@@ -78,6 +82,15 @@ func set_control_point2(point: Vector2) -> void:
 	_curve.control2 = point
 	emit_signal("control2_changed")
 	update()
+
+
+func set_closest_handle_position(position: Vector2) -> void:
+	var delta1 = position.distance_squared_to(_curve.control1)
+	var delta2 = position.distance_squared_to(_curve.control2)
+	if delta1 < delta2:
+		set_control_point1(position)
+	else:
+		set_control_point2(position)
 
 
 func _get_dragging_from_position(position: Vector2) -> int:
