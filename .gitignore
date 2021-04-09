@@ -10,5 +10,6 @@ export_presets.cfg
 .mono/
 data_*/
 
+# web build
 /index.*
 /favicon.*

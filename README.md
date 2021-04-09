@@ -13,4 +13,4 @@ Available at the [Asset Library](https://godotengine.org/asset-library/asset/909
 
 Live preview a sample scene [in this link](https://gilzoide.github.io/godot-cubic-bezier-controls/).
 
-![Bézier Curve editor sample](screenshots/sample1.png)
+![Bézier Curve editor sample](screenshots/video1.gif)
