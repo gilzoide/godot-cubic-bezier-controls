@@ -23,12 +23,12 @@ func _init(control1 := Vector2.ZERO, control2 := Vector2.ONE) -> void:
 func copy_from(other: CubicBezierCurve) -> void:
 	_control1 = other._control1
 	_control2 = other._control2
-	emit_changed()
+	emit_signal("changed")
 
 
 func set_control1(value: Vector2) -> void:
 	_control1 = value
-	emit_changed()
+	emit_signal("changed")
 
 
 func get_control1() -> Vector2:
@@ -37,7 +37,7 @@ func get_control1() -> Vector2:
 
 func set_control2(value: Vector2) -> void:
 	_control2 = value
-	emit_changed()
+	emit_signal("changed")
 
 
 func get_control2() -> Vector2:

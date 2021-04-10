@@ -42,7 +42,7 @@ window/size/width=800
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/cubic_bezier_controls/plugin.cfg" )
+enabled=PoolStringArray( "cubic_bezier_controls" )
 
 [global]
 
